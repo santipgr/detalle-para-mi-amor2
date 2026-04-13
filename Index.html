@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida🩵</title>
+    <style>
+        :root { --celeste: #00cad8; --azul-amor: #068ddb; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .container { background: rgb(255, 255, 255); padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 400px; text-align: center; border: 2px solid var(--celeste); }
+        h1 { color: var(--azul-amor); font-size: 1.4rem; margin-bottom: 20px; }
+        #mensaje-contenedor { min-height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        p { color: #444; font-size: 1.1rem; line-height: 1.5; margin: 0; animation: fadeIn 0.8s; }
+        button { background-color: var(--azul-amor); color: rgb(255, 255, 255); border: none; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: transform 0.2s, background 0.3s; box-shadow: 0 4px 15px rgba(0,119,182,0.3); }
+        button:active { transform: scale(0.95); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Para Mi Hermosa Preciosa 🩵</h1>
+        <div id="mensaje-contenedor">
+            <p id="frase">Sé que hay dias en los cuales nos extrañamos o dudas de mi amor. Pero esto es para que cada vez que dudes o me extrañes puedas ver un detallesito con mucho amor. Te amo</p>
+        </div>
+        <button onclick="generarFrase()">Apreta para ver el mensaje🩵</button>
+    </div>
+
+    <script>
+        const frases = [
+            "Eres el pensamiento más lindo que se cruza por mi mente a diario.", "Me haces sentir que, a tu lado, todo es posible y mejor.",
+            "Te elegiría en esta vida y en todas las que vengan.", "Me encantas de una forma que no puedo explicar con palabras.",
+            "Tu sonrisa es la luz que ilumina hasta mis días más grises.", "No hay un solo momento en el que no te lleve conmigo en el pensamiento.",
+            "Mi felicidad tiene nombre y apellido: el tuyo.", "Abrazarte es, sin duda, mi lugar favorito en el mundo.",
+            "Eres la calma que mi corazón necesita después de un día agitado.", "Gracias por existir y por cruzarte en mi camino.",
+            "Mi día se vuelve perfecto en el instante en que hablo contigo.", "Tus ojos y sonrisa son la imagen que me da paz en cualquier momento.",
+            "Te extraño siempre, incluso cuando recien acabamos de despedirnos.", "Eres todo lo bonito que me ha pasado en la vida.",
+            "Gracias por amarme con tanta paciencia y ternura.", "Contigo aprendí lo que realmente significa amar con el alma.",
+            "Mi plan favorito siempre será cualquier cosa, siempre que sea contigo.", "Tienes el don de hacerme sentir la persona más especial de la tierra.",
+            "Podría pasar mil años y horas a tu lado y nunca me cansaría de ti.", "Tienes mi corazón en tus manos, y no podría estar en mejor lugar.",
+            "Hay algo de magia en ti que hace que todo brille más.", "Tu amor tiene el poder de sanar cualquier herida.",
+            "Te pienso con un amor tan grande que no me cabe en el pecho.", "Eres, por mucho, el amor de mi vida y la mujer mas hermosa que me podia tocar para ocupar ese lugar.",
+            "No me canso de agradecer la suerte que tuve al encontrarte.", "Amo que seas exactamente así, tan auténtica y que seas vos misma. Loca, intensa, amorosa, pesada, enojona y todo eso me enamora aun mas.",
+            "Te abrazo con el alma cada vez que no puedo hacerlo en persona.", "Te amo en cada pequeño detalle, en cada gesto y en cada palabra.",
+            "Eres mi refugio seguro cuando mi mundo se pone difícil.", "Te admiro muchísimo por la mujer tan increíble que sos.",
+            "Tu ternura logra que me desarme por completo.", "Aunque no lo diga a cada segundo, te amo muchisimo mi amor, mi amor por vos es tan inmenso que no lo puedo expresar.",
+            "La paz que me transmitis es mi regalo más preciado.", "Estar contigo es sentir una paz tan grande conmigo mismo, la cual me hace darme cuenta que estoy con la persona indicada.",
+            "Eres la historia más hermosa que la vida me ha permitido escribir.", "Te quiero con una intensidad y amor que nunca antes había sentido por nadie.",
+            "Me haces bien con solo estar presente, sin el más mínimo esfuerzo.", "Amarte es, por mucho, mi actividad favorita del día.",
+            "¿Que lo no? Que los astronautas tengas que ir a la luna para ver el mundo y yo con solo verte a los ojos veo el universo entero..", "Tu abrazo es el único lugar donde quiero estar cuando mis dias son grises.",
+            "Una sola mirada tuya basta para calmar todas mis tormentas.", "Te tengo presente mucho más de lo que alcanzas a imaginar.",
+            "Tener tu amor es el regalo más valioso que he recibido.", "Gracias por sostener mi mano y no soltarme nunca.",
+            "Eres mi refugio más bonito en este mundo.", "Amo lo que somos cuando estamos juntos y lo que construimos cada día.",
+            "Me haces sentir en total seguridad y confianza, para ser como soy yo realmente.", "Te quiero cerquita de mí, hoy, mañana y toda mi vida.",
+            "Eres la respuesta a todo lo que alguna vez pedí en silencio.", "Solo tu presencia logra que todo a mi alrededor se sienta bien.",
+            "Gracias por hacerme sentir que soy suficiente tal como soy.", "Eres la poesía que le da color a mis días más grises.",
+            "Mi corazón siempre encuentra la forma de extrañarte.", "Me encantas hasta cuando no haces nada, simplemente siendo tú.",
+            "Quiero construir un futuro entero de tu mano.", "Mi amor por ti es suave, profundo y totalmente sincero.",
+            "Tu te amo es lo mejor que me pasa en el día.", "Me haces reír desde lo más profundo del corazón.",
+            "En tus brazos encontré el lugar más seguro de la tierra.", "Me enamoro de nuevo de ti cada vez que te veo y sigo sin creer el pedazo de mujer que tengo a mi lado.",
+            "Te aseguro que no existe absolutamente nadie que se te compare.", "Tu amor incondicional es lo que me da fuerzas cada mañana.",
+            "Eres la paz que mi alma buscaba sin saberlo.", "Estar contigo me hace sentir más vivo que nunca.",
+            "Tu risa es, y siempre será, mi sonido preferido.", "Eres mi pedacito de cielo aquí en la tierra.",
+            "Cada día que pasa, descubro una nueva razón para quererte más.", "A tu lado me siento una persona completa y feliz.",
+            "Eres el amor de mi vida y el tesoro que elijo cuidar siempre.", "Siento tu cariño abrazándome, sin importar la distancia que nos separe.",
+            "Eres mucho más de lo que alguna vez me atreví a soñar.", "Gracias por hacerme sentir tan amado y valorado.",
+            "Te amo con calma, pero con una certeza absoluta.", "Eres mi mayor motivación para ser mejor cada día.",
+            "Gracias por hacerme creer de nuevo en el amor bonito y real.", "Tu alegría es mi motor y mi mayor felicidad.",
+            "Qué maravilla haber coincidido contigo en esta vida.", "Solo con pensar en ti o verte, una sonrisa se dibuja en mi cara.",
+            "Eres la definición perfecta de la ternura.", "Amo la forma en la que me haces sentir cuando estamos juntos.", "LLegaste para salvarme cuando ya creia que la vida no tenia sentido, y me demostraste que vale la pena vivirla y mas cuando tengo a una persona tan hermosa a mi lado para acompañrme. Te amo.",
+            "Te mando un abrazo y un beso con muchisimo amor para que te llegue directo al corazón.", "Eres, sin duda, el mejor golpe de suerte que he tenido.",
+            "No pasa un día sin que me sienta agradecido por tenerte.", "Eres mi historia favorita, esa que nunca quiero dejar de leer.",
+            "Gracias por estar conmigo en las buenas y en las no tan buenas.", "Me gustas por mil razones, y también sin ninguna razón en especial.",
+            "Eres el lugar donde siempre quiero quedarme a vivir.", "Hay pedacitos de ti en cada cosa que miro y me gusta.",
+            "Me haces sentir amado de una forma única y especial.", "Eres el presente más hermoso que la vida me ha dado.",
+            "No necesito nada más en este mundo si te tengo a ti.", "Eres luz, eres paz y eres puro amor para mí y el tesoro mas grande de mi vida.",
+            "A veces creo que eres un pequeño milagro en mi vida.", "Tu amor me abraza por dentro y me da una calidez increíble.",
+            "Eres el latido más dulce y constante que tengo.", "Qué increíble es aprender a amar de tu mano.",
+            "Te amo con todo lo que soy, con mis luces y mis sombras.", "Eres mi principio, mi hoy y mi para siempre.",
+            "Te elijo hoy, y te volvería a elegir cada mañana al despertar.", "Gracias por enseñarme lo que es el amor real Mi amor."
+        ];
+
+        function generarFrase() {
+            const index = Math.floor(Math.random() * frases.length);
+            const p = document.getElementById('frase');
+            p.style.opacity = 0;
+            setTimeout(() => {
+                p.innerText = frases[index] + " 🩵";
+                p.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
